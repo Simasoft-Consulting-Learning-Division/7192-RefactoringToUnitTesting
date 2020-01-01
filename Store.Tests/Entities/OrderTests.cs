@@ -7,14 +7,15 @@ namespace Store.Tests.Entities
     [TestClass]
     public class OrderTests
     {
+        private readonly Customer _customer = new Customer("Luis Gabriel N. Simas", "gabrielsimas@gmail.com");
+        private readonly Product _product = new Product("Produto 1", 10, true);
+        private readonly Discount _discount = new Discount(10,DateTime.Now.AddDays(5));
+
         [TestMethod]
         [TestCategory("Domain")]
         public void DadoUmNovoPedidoValidoDeveGerarUmNumeroComOitoCaracteres()
-        {
-            Customer customer = new Customer("Luis Gabriel N. Simas", "gabrielsimas@gmail.com");
-            Discount discount = new Discount(5m,DateTime.Now.AddDays(5));
-            Order order = new Order(customer,0.05m,discount);
-
+        {            
+            Order order = new Order(_customer,0,_discount);
             Assert.AreEqual(8, order.Number.Length);
         }
 
