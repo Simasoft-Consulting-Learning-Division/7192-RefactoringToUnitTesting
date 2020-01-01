@@ -26,7 +26,7 @@ namespace Store.Tests.Queries
         public void DadoAConsultaDeProdutosAtivosDeveRetornarTres()
         {
             var result = _products.AsQueryable().Where(ProductQueries.GetActiveProducts());
-            Assert.AreEqual(result.Count(),3);
+            Assert.AreEqual(result.Count(), 3);
         }
 
         [TestMethod]
@@ -34,7 +34,7 @@ namespace Store.Tests.Queries
         public void DadoAConsultaDeProdutosInativosDeveRetornarDois()
         {            
             var result = _products.AsQueryable().Where(ProductQueries.GetInactiveProducts());
-            Assert.AreEqual(result.Count(),2);
+            Assert.AreEqual(result.Count(), 2);
         }
     }
 }
