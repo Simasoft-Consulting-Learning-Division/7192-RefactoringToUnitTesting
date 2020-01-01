@@ -34,7 +34,7 @@ namespace Store.Domain.Entities
         public void AddItem(Product product, int quantity)
         {
             OrderItem item = new OrderItem(product, quantity);
-            if(item.Valid)
+            if (item.Valid)
                 Items.Add(item);
         }
 
