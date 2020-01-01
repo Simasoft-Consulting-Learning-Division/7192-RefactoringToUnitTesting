@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Store.Domain.Entities;
+using Store.Domain.Queries;
 
 namespace Store.Tests.Queries
 {
@@ -24,16 +25,16 @@ namespace Store.Tests.Queries
         [TestCategory("Queries")]
         public void DadoAConsultaDeProdutosAtivosDeveRetornarTres()
         {
-            var result = _products.AsQueryable().Where(p => p.Active).Count();                        
-            Assert.AreEqual(result,3);
+            var result = _products.AsQueryable().Where(ProductQueries.GetActiveProducts());
+            Assert.AreEqual(result.Count(),3);
         }
 
         [TestMethod]
         [TestCategory("Queries")]
         public void DadoAConsultaDeProdutosInativosDeveRetornarDois()
         {            
-            var result = _products.AsQueryable().Where(p => !p.Active).Count();                        
-            Assert.AreEqual(result,2);
+            var result = _products.AsQueryable().Where(ProductQueries.GetInactiveProducts());
+            Assert.AreEqual(result.Count(),2);
         }
     }
 }
